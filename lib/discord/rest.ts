@@ -1,4 +1,4 @@
-import { REST } from '@discordjs/rest';
+import { REST } from 'discord.js';
 
 // Helper to create a Discord REST client for bot API calls.
 export const createDiscordRest = (token: string) => {
