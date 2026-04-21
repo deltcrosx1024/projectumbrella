@@ -1,10 +1,16 @@
-import Link from 'next/link';
+'use client';
 
-export const dynamic = 'force-dynamic';
+import { signIn } from 'next-auth/react';
+import { useState } from 'react';
 
-// The sign-in page provides a stable server-rendered entry point for Discord OAuth.
-// NextAuth handles the redirect from the API route.
 export default function SignInPage() {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSignIn = async () => {
+    setIsLoading(true);
+    await signIn('discord', { callbackUrl: '/dashboard' });
+  };
+
   return (
     <main className="min-h-screen bg-[#050506] px-6 py-10 text-white">
       <div className="mx-auto flex min-h-[65vh] max-w-3xl flex-col items-center justify-center gap-6 rounded-[2rem] border border-white/10 bg-white/5 p-10 text-center shadow-xl shadow-black/20">
@@ -12,12 +18,13 @@ export default function SignInPage() {
         <p className="max-w-xl text-zinc-300">
           Click the button below to authenticate with Discord. NextAuth will redirect you back to the dashboard on success.
         </p>
-        <Link
-          href="/api/auth/signin/discord?callbackUrl=/dashboard"
-          className="inline-flex rounded-3xl bg-blue-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-400"
+        <button
+          onClick={handleSignIn}
+          disabled={isLoading}
+          className="inline-flex rounded-3xl bg-blue-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-400 disabled:opacity-50"
         >
-          Sign in with Discord
-        </Link>
+          {isLoading ? 'Signing in...' : 'Sign in with Discord'}
+        </button>
       </div>
     </main>
   );

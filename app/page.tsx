@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { SectionCard } from '@/components/SectionCard';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import type { FeatureCard } from '@/lib/types';
+import Image from 'next/image';
 
 // Feature cards on the homepage. Keep this data simple and easy to extend.
 const features: FeatureCard[] = [
@@ -27,10 +28,10 @@ export default function Home() {
           <div className="space-y-4">
             <p className="text-sm uppercase tracking-[0.24em] text-blue-300/80">ProjectUmbrella</p>
             <h1 className="max-w-3xl text-5xl font-semibold leading-tight text-white sm:text-6xl">
-              Build a powerful Discord automod and administration bot with a modern Next.js control panel.
+              The new cutting edge Automod/Administration bot for your DIscord Server
             </h1>
             <p className="max-w-2xl text-base leading-8 text-zinc-300">
-              ProjectUmbrella brings website-driven bot configuration, Discord OAuth login, and interaction endpoint hosting on Vercel.
+              Take control of your Discord server with ProjectUmbrella, the all-in-one bot for automod, administration, and slash command management. Sign in with Discord to get started.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
@@ -50,7 +51,9 @@ export default function Home() {
           <div className="flex items-center justify-center rounded-[1.75rem] bg-white/5 p-8 shadow-inner shadow-black/20">
             <div className="rounded-3xl border border-white/10 bg-[#101012] p-8 text-center">
               <p className="text-sm uppercase tracking-[0.24em] text-blue-300/80">Theme</p>
-              <p className="mt-4 text-6xl">☂️</p>
+              <p className="mt-4 text-2xl">
+              🫠
+              </p>
               <p className="mt-4 text-zinc-300">Dark mode first, switch any time.</p>
               <div className="mt-6 flex justify-center">
                 <ThemeToggle />
